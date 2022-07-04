@@ -1,7 +1,5 @@
 package com.example.fission;
 
-import org.springframework.core.env.Environment;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,16 +8,14 @@ public class Agent {
 
     //本次任务
     public boolean fissionable; //可以发送
-    public boolean be_fissioned;  //可以被发 有什么情况不能被发？
     public int fission_task; //现有任务数量 也许task可以单独做一个类
     public int max_help_fission_people; //最多助力几人
 
 
     //社交距离/助力意愿
-    public InteractionHistory interactionHistory; //交互历史
-    public HashMap<Agent,Integer> intimacy;//跟每个人的助力意愿/intimacy 会根据互动历史变化 要不要放进交互历史里面？
-    public int max_social_distances; //最大社交距离（注意不是助力一元
-    public int cur_social_distance; //目前社交距离 会根据个人历史数据浮动
+    public HashMap<Agent,List<Integer>> socialAndPsychDistanc;//跟每个人的助力意愿/intimacy 会根据互动历史变化 要不要放进交互历史里面？
+
+
 
 
     //个人历史数据 （有没有必要）
@@ -32,14 +28,14 @@ public class Agent {
     public double avg_fission_count = 0; //所有轮平均被助力次数
 
 
-    //getters
-    //setters
+
 
     //Class Decision?
     //决定要不要参与
     public boolean  decideToParticipate(EnvironmentStat envStat){
         //个人历史记录可以作为参考
         //跟新世界数据
+        //根据历史成功次数 fission success  + participation score 决定要不要参与
         envStat.incrementParticipation();
 
     }
@@ -47,9 +43,7 @@ public class Agent {
     //参与了 决定要发给哪些人
     public List<Agent> invitationDecision(){
         List<Agent> invited = new ArrayList<Agent>();
-        //考虑a.在社交范围内
-        //b.按照之前回复率最高排序
-        // c.回复率如果太低一般就不再考虑了
+        //考虑a.intimacy < social distance 就发    intimacy 太大某个bar 排除
         return invited;
     }
 
@@ -57,7 +51,7 @@ public class Agent {
     public List<Agent> decideToHelp(List<Agent> agent){
         //在cur/max社交距离以内
         //在能帮助的人quota以内 max_help_fission_people
-        // 通过历史交互/助力意愿排序
+        // 通过社交距离排序
         //加一定成分的noise
         List<Agent> helping = new List<Agent>();
         return helping;
@@ -71,6 +65,10 @@ public class Agent {
 
     calculate/update_intimacy(another agent) ：
     //会因为哪些情况变亲近和变疏远 应该跟agent.sent_agents裂变历史里的那个人的回复率有关
+
+    发给一个人 partcipationn +1
+    回了 他+1我+1 psychDist  90%
+    没回  intimacy  110%
 
 
 }
