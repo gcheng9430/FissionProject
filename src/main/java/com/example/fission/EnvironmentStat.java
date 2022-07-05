@@ -1,21 +1,32 @@
 package com.example.fission;
 
+import lombok.Data;
+
+@Data
 public class EnvironmentStat {
-    private int total_participation;
-    private int total_success;
-    private int total_fission;
+    public int totalParticipation;
+    public int totalSuccess;
+    public int totalFission;
+
+    public int currentRound;
+    public boolean done = false;
+
+    public void incrementCurrentRound(){
+        this.currentRound++;
+    }
 
 
     public void incrementParticipation(){
-        this.total_participation +=1;
+        this.totalParticipation +=1;
     }
 
-    public void incrementSuccess(){
-        this.total_success +=1;
+    public void incrementSuccess(int n){
+
+        this.totalSuccess +=n;
     }
 
     public void incrementFissionCount(int n){
-        this.total_fission += n;
+        this.totalFission += n;
     }
 
 }
