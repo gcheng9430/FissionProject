@@ -25,7 +25,7 @@ public class Agent {
     public HashMap<Agent,List<Double>> socialAndPsychDist = new HashMap<Agent,List<Double>>();
 
     //个人历史数据 （有没有必要）
-    public int participationScore=1; //总共参与度
+    public double participationScore= 0.1; //总共参与度
     public int participationCount = 0; //总共参与轮次数
     public int successNum = 0; //成功完成任务次数
 //    public double successRate = 0;  //历史完成任务rate
@@ -67,8 +67,8 @@ public class Agent {
     public static void updateRelationSuccess(Agent sender, Agent receiver) {
         //成功助力
         //参与度增加
-        sender.setParticipationScore(sender.getParticipationScore()+1);
-        receiver.setParticipationScore(receiver.getParticipationScore()+1);
+        sender.setParticipationScore(sender.getParticipationScore()+0.1);
+        receiver.setParticipationScore(receiver.getParticipationScore()+0.1);
         //sender单方面亲密度增加
         double newPsychDist = sender.getSocialAndPsychDist().get(receiver).get(1)* 1.1;
         Agent.setNewPsychDist(sender,receiver, newPsychDist);
@@ -82,7 +82,7 @@ public class Agent {
     public static void updateRelationFailure(Agent sender, Agent receiver) {
         //失败助力
         //参与度增加
-        sender.setParticipationScore(sender.getParticipationScore()+1);
+        sender.setParticipationScore(sender.getParticipationScore()+0.1);
         //sender 单方面亲密度疏远
         double newPsychDist = sender.getSocialAndPsychDist().get(receiver).get(1)* 0.9;
         Agent.setNewPsychDist(sender,receiver, newPsychDist);
@@ -147,11 +147,11 @@ public class Agent {
         this.socialAndPsychDist = socialAndPsychDist;
     }
 
-    public int getParticipationScore() {
+    public double getParticipationScore() {
         return participationScore;
     }
 
-    public void setParticipationScore(int participationScore) {
+    public void setParticipationScore(double participationScore) {
         this.participationScore = participationScore;
     }
 

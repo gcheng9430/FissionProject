@@ -12,37 +12,35 @@ import static com.example.fission.OneStepFission.step;
 public class Train {
 
     public static void train(){
+        JFrame f = new JFrame();
+        f.setSize(1000,1000);
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Environment env = new Environment();
         World world = new World(200);
         BaseScenario scenario = new BaseScenario(world,0.5);
-        CreateAndShowUI showUI = new CreateAndShowUI(world);
         int episode = 0;
         System.out.println("start iterations...");
         while (true){
             HashMap<Agent, List<Agent>> fissioned = step(world,scenario);
-
             boolean done = world.getEnvironmentStat().done;
-            if (done || episode  >= 3){
+            if (done || episode  >= 100){
                 //env.reset();
                 episode  = 0;
-                break; //可以continue
+                return; //可以continue
             }
+            CreateAndShowUI.DrawOneStep p = new CreateAndShowUI.DrawOneStep(world,fissioned);
+            f.add(p);
+            f.setVisible(true);
 
             episode ++;
-            //env.render(env.world);
-            //showUI.drawLine(fissioned);
-            //showUI.drawCircle(world);
 
-            SwingUtilities.invokeLater((new Runnable() {
-                @Override
-                public void run() {
-                    showUI.drawLine(fissioned);
-                    showUI.drawCircle(world);
-                }
-            }));
+        }
+
     }
     }
 
 
-}
+
+
+

@@ -15,9 +15,9 @@ public class OneStepFission {
 
     public static HashMap<Agent,List<Agent>> step(World world, BaseScenario scenario){
         //由scenario决定是否使用：
-        //根据历史收益决定参与意愿 1 - exp(-lambda * x) x:历史成功次数
+        //根据历史收益决定参与意愿 1 - exp(-lambda * x) x:历史成功次数 TODO
         //agent.decideToParticipate()
-        //为每个人根据已知政策分配任务
+        //为每个人根据已知政策分配任务 TODO
         //scenario.applyActionFissionForce();
 
         //新的一轮裂变开始
