@@ -1,6 +1,5 @@
-package Scenario;
+package com.example.fission.Scenario;
 
-import com.example.fission.Agent;
 import com.example.fission.World;
 import lombok.Data;
 

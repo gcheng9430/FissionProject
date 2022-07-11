@@ -1,15 +1,12 @@
 package com.example.fission;
 
-import Scenario.Scenario;
-import Scenario.BaseScenario;
+import com.example.fission.Scenario.Scenario;
+import com.example.fission.Scenario.BaseScenario;
 import lombok.Data;
-
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.example.fission.Agent.calculateDist;
 //////not using
+
+
+
 @Data
 public class Environment {
     public World world;

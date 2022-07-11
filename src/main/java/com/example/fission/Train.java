@@ -1,7 +1,6 @@
 package com.example.fission;
 
-import Scenario.BaseScenario;
-import Scenario.Scenario;
+import com.example.fission.Scenario.BaseScenario;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -17,7 +16,7 @@ public class Train {
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        World world = new World(200);
+        World world = new World(1000);
         BaseScenario scenario = new BaseScenario(world,0.5);
         int episode = 0;
         System.out.println("start iterations...");

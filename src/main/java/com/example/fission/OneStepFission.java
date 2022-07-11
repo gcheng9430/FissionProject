@@ -1,13 +1,12 @@
 package com.example.fission;
 
-import Scenario.BaseScenario;
-import Scenario.Scenario;
+import com.example.fission.Scenario.BaseScenario;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static OneStepProcess.ReceivingNDecide.receivingNDecide;
-import static OneStepProcess.SendingInvites.sendingInvites;
+import static com.example.fission.OneStepProcess.ReceivingNDecide.receivingNDecide;
+import static com.example.fission.OneStepProcess.SendingInvites.sendingInvites;
 import static com.example.fission.Agent.updateRelationFailure;
 import static com.example.fission.Agent.updateRelationSuccess;
 

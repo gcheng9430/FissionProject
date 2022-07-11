@@ -1,9 +1,7 @@
-package OneStepProcess;
+package com.example.fission.OneStepProcess;
 
-import Scenario.BaseScenario;
-import Scenario.Scenario;
+import com.example.fission.Scenario.BaseScenario;
 import com.example.fission.Agent;
-import com.example.fission.EnvironmentStat;
 import com.example.fission.World;
 
 import java.util.ArrayList;

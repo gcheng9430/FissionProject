@@ -1,18 +1,15 @@
 package com.example.fission;
 
-import Scenario.BaseScenario;
+import com.example.fission.Scenario.BaseScenario;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.HashMap;
 import java.util.List;
 
 import static com.example.fission.OneStepFission.step;
-import static com.example.fission.Train.train;
 
 
 public class CreateAndShowUI extends JFrame {
@@ -98,14 +95,14 @@ public class CreateAndShowUI extends JFrame {
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        World world = new World(200);
+        World world = new World(1000);
         BaseScenario scenario = new BaseScenario(world,0.5);
         int episode = 0;
         System.out.println("start iterations...");
         while (true){
             HashMap<Agent, List<Agent>> fissioned = step(world,scenario);
             boolean done = world.getEnvironmentStat().done;
-            if (done || episode  >= 100){
+            if (done || episode  >= 500){
                 //env.reset();
                 episode  = 0;
                 return; //可以continue
